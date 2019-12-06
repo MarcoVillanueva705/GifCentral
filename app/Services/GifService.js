@@ -26,6 +26,11 @@ class GifService {
     _store.commit("gifs", res.data.data)
     console.log("gifs from store", store.State.gifs)
   }
+
+  async selectGifAsync(id){
+    let res = await _gifApi.get(id)
+    console.log("from select gif service", res.data)
+  }
 }
 
 const service = new GifService();

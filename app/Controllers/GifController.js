@@ -6,7 +6,8 @@ function _drawGifs() {
    let template = "";
    let gifs = _store.State.gifs;
    console.log("some gifs", gifs);
-  template += `<image src="${gifs.image_url}" onclick="app.gifController.selectGifsAsync("${gifs.id}")"/>` 
+  template += `<image src="${gifs.image_url}" onclick="app.gifController.selectGifAsync('${gifs.image_url}, ${gifs.id}')"/>` 
+  // spells.forEach(s=> template += `<li onclick="app.spellsController.selectMySpellAsync('${s.id}')"> ${s.name}</li>`)
   document.getElementById("gifs").innerHTML = template
 }
 
@@ -21,8 +22,9 @@ export default class GifController {
   async selectGifAsync(id) {
 try {
   //make method in service
-  await GifService.selectGifAsync()
+  await GifService.selectGifAsync(id)
 }catch (error){
+  debugger
   console.error(error)
 }
   }
